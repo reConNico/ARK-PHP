@@ -14,11 +14,15 @@ declare(strict_types=1);
 namespace BrianFaust\Ark;
 
 use BrianFaust\Http\Http;
+use NumberFormatter;
 
 class Client
 {
     /** @var \BrianFaust\Ark\Config */
-    public $protocol;
+    public $config;
+
+    /** @var \BrianFaust\Ark\Config */
+    public $version;
 
     /**
      * Create a new Ark client instance.
@@ -32,20 +36,37 @@ class Client
     }
 
     /**
+     * @param int $version
+     */
+    public function setClientVersion(int $version): self {
+        $this->version = $version;
+
+        return $this;
+    }
+
+    /**
      * @param string $name
      *
      * @return \BrianFaust\Ark\API\AbstractAPI
      */
     public function api(string $name): API\AbstractAPI
     {
-        $client = Http::withBaseUri("{$this->config->protocol}://{$this->config->ip}:{$this->config->port}/")->withHeaders([
+        $client = Http::withBaseUri($this->config->host)->withHeaders([
             'nethash' => $this->config->nethash,
             'version' => $this->config->version,
             'port'    => 1,
+            'API-Version' => $this->version,
         ]);
 
-        $class = "BrianFaust\\Ark\\API\\{$name}";
+        $class = $this->buildClassName();
 
         return new $class($this, $client);
+    }
+
+    private function buildClassName() {
+        $formatter = new NumberFormatter("en", NumberFormatter::SPELLOUT);
+        $version = ucfirst($formatter->format($this->version));
+
+        return "BrianFaust\\Ark\\API\\{$version}\\{$name}";
     }
 }

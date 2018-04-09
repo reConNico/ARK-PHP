@@ -11,7 +11,7 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace BrianFaust\Ark\API;
+namespace BrianFaust\Ark\API\One;
 
 use Illuminate\Support\Collection;
 
@@ -26,7 +26,7 @@ class Transport extends AbstractAPI
      */
     public function blocksCommon(array $ids): Collection
     {
-        $ids = collect($ids)->transform(function ($id) {
+        $ids = collect($ids)->transform(function (string $id) {
             return "'$id'";
         });
 

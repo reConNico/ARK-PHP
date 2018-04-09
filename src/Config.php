@@ -18,13 +18,7 @@ use BitWasp\Bitcoin\Network\NetworkFactory;
 class Config
 {
     /** @var string */
-    public $protocol;
-
-    /** @var string */
-    public $ip;
-
-    /** @var int */
-    public $port;
+    public $host;
 
     /** @var string */
     public $nethash;
@@ -41,18 +35,14 @@ class Config
     /**
      * Create a new Ark client instance.
      *
-     * @param string                                  $protocol
-     * @param string                                  $ip
-     * @param int                                     $port
+     * @param int                                     $host
      * @param string                                  $nethash
      * @param string                                  $version
      * @param \BitWasp\Bitcoin\Network\NetworkFactory $networkAddress
      */
-    public function __construct(string $protocol, string $ip, int $port, string $nethash, string $version, string $networkAddress)
+    public function __construct(string $host, string $nethash, string $version, string $networkAddress)
     {
-        $this->protocol = $protocol;
-        $this->ip = $ip;
-        $this->port = $port;
+        $this->host = $host;
         $this->nethash = $nethash;
         $this->version = $version;
         $this->networkAddress = $networkAddress;
