@@ -104,7 +104,7 @@ class Crypto
         return (new PayToPubKeyHashAddress($digest))->getAddress($network);
     }
 
-    public static function verify($transaction)
+    public static function verify(object $transaction)
     {
         $publicKey = PublicKeyFactory::fromHex($transaction->senderPublicKey);
         $bytes = TransactionBuilder::getBytes($transaction);
@@ -115,7 +115,7 @@ class Crypto
         );
     }
 
-    public static function secondVerify($transaction, $secondPublicKeyHex)
+    public static function secondVerify(object $transaction, string $secondPublicKeyHex)
     {
         $secondPublicKeys = PublicKeyFactory::fromHex($secondPublicKeyHex);
         $bytes = TransactionBuilder::getBytes($transaction, false);
