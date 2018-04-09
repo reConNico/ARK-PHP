@@ -13,6 +13,7 @@ declare(strict_types=1);
 
 namespace BrianFaust\Ark;
 
+use BrianFaust\Ark\Builder\TransactionBuilder;
 use BrianFaust\Http\Http;
 use NumberFormatter;
 

@@ -11,29 +11,11 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace BrianFaust\Ark;
+namespace BrianFaust\Ark\Builder;
 
 use BitWasp\Bitcoin\Crypto\Hash;
 use BitWasp\Buffertools\Buffer;
 use BrianFaust\Ark\Utils\Crypto;
-
-class TransactionType
-{
-    const TRANSFER = 0;
-    const SECONDSIGNATURE = 1;
-    const DELEGATE = 2;
-    const VOTE = 3;
-    const MULTISIGNATURE = 4;
-}
-
-class TransactionFee
-{
-    const TRANSFER = 10000000;
-    const SECONDSIGNATURE = 500000000;
-    const DELEGATE = 2500000000;
-    const VOTE = 100000000;
-    const MULTISIGNATURE = 500000000;
-}
 
 class TransactionBuilder
 {
@@ -82,9 +64,9 @@ class TransactionBuilder
     public function createSecondSignature($secondPassphrase, $firstPassphrase)
     {
         $transaction = self::createEmptyTransaction();
-        $transaction->type = TransactionType::SECONDSIGNATURE;
+        $transaction->type = TransactionType::SECOND_SIGNATURE;
         $transaction->amount = 0;
-        $transaction->fee = TransactionFee::SECONDSIGNATURE;
+        $transaction->fee = TransactionFee::SECOND_SIGNATURE;
         $transaction->asset['signature'] = ['publicKey' => Crypto::getKeys($secondPassphrase)->getPublicKey()->getHex()];
         $transaction->timestamp = self::getTimeSinceEpoch();
 
@@ -151,9 +133,9 @@ class TransactionBuilder
     public function createMultiSignature(string $secret, string $secondSecret, array $keysgroup, int $lifetime, int $min)
     {
         $transaction = self::createEmptyTransaction();
-        $transaction->type = TransactionType::MULTISIGNATURE;
+        $transaction->type = TransactionType::MULTI_SIGNATURE;
         $transaction->amount = 0;
-        $transaction->fee = (count($keysgroup) + 1) * TransactionFee::MULTISIGNATURE;
+        $transaction->fee = (count($keysgroup) + 1) * TransactionFee::MULTI_SIGNATURE;
         $transaction->timestamp = self::getTimeSinceEpoch();
         $transaction->asset['multisignature'] = [
             'min'       => $min,
@@ -224,14 +206,14 @@ class TransactionBuilder
         $out .= pack('P', $transaction->amount);
         $out .= pack('P', $transaction->fee);
 
-        if ($transaction->type == TransactionType::SECONDSIGNATURE) { // second signature
+        if ($transaction->type == TransactionType::SECOND_SIGNATURE) { // second signature
             $assetSigPubKey = $transaction->asset['signature']['publicKey'];
             $out .= pack('H'.strlen($assetSigPubKey), $assetSigPubKey);
         } elseif ($transaction->type == TransactionType::DELEGATE) {
             $out .= $transaction->asset['delegate']['username'];
         } elseif ($transaction->type == TransactionType::VOTE) {
             $out .= implode('', $transaction->asset['votes']);
-        } elseif ($transaction->type == TransactionType::MULTISIGNATURE) {
+        } elseif ($transaction->type == TransactionType::MULTI_SIGNATURE) {
             $out .= pack('C', $transaction->asset['multisignature']['min']);
             $out .= pack('C', $transaction->asset['multisignature']['lifetime']);
             $out .= implode('', $transaction->asset['multisignature']['keysgroup']);
