@@ -21,8 +21,8 @@ class Client
     /** @var \BrianFaust\Ark\Config */
     public $config;
 
-    /** @var \BrianFaust\Ark\Config */
-    public $version;
+    /** @var int */
+    public $version = 1;
 
     /**
      * Create a new Ark client instance.
@@ -59,12 +59,12 @@ class Client
             'API-Version' => $this->version,
         ]);
 
-        $class = $this->buildClassName();
+        $class = $this->buildClassName($name);
 
         return new $class($this, $client);
     }
 
-    private function buildClassName()
+    private function buildClassName(string $name): string
     {
         $formatter = new NumberFormatter('en', NumberFormatter::SPELLOUT);
         $version = ucfirst($formatter->format($this->version));
