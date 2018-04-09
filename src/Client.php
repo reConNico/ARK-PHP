@@ -38,7 +38,7 @@ class Client
     /**
      * @param int $version
      */
-    public function setClientVersion(int $version): self
+    public function withVersion(int $version): self
     {
         $this->version = $version;
 
