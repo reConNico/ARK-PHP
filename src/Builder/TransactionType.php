@@ -13,10 +13,6 @@ declare(strict_types=1);
 
 namespace BrianFaust\Ark\Builder;
 
-use BitWasp\Bitcoin\Crypto\Hash;
-use BitWasp\Buffertools\Buffer;
-use BrianFaust\Ark\Utils\Crypto;
-
 class TransactionType
 {
     const TRANSFER = 0;
