@@ -18,24 +18,27 @@ use Illuminate\Support\Collection;
 
 class Node extends AbstractAPI
 {
-  /**
-   * @return \Illuminate\Support\Collection
-   */
-  public function status (): Collection {
-    return $this->get('node/status');
-  }
+    /**
+     * @return \Illuminate\Support\Collection
+     */
+    public function status(): Collection
+    {
+        return $this->get('node/status');
+    }
 
-  /**
-   * @return \Illuminate\Support\Collection
-   */
-  public function syncing (): Collection {
-    return $this->get('node/syncing');
-  }
+    /**
+     * @return \Illuminate\Support\Collection
+     */
+    public function syncing(): Collection
+    {
+        return $this->get('node/syncing');
+    }
 
-  /**
-   * @return \Illuminate\Support\Collection
-   */
-  public function configuration (): Collection {
-    return $this->get('node/configuration');
-  }
+    /**
+     * @return \Illuminate\Support\Collection
+     */
+    public function configuration(): Collection
+    {
+        return $this->get('node/configuration');
+    }
 }

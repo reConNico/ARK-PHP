@@ -18,10 +18,11 @@ use Illuminate\Support\Collection;
 
 class Signatures extends AbstractAPI
 {
-  /**
-   * @return \Illuminate\Support\Collection
-   */
-  public function fee (): Collection {
-    return $this->get('signatures/fee');
-  }
+    /**
+     * @return \Illuminate\Support\Collection
+     */
+    public function fee(): Collection
+    {
+        return $this->get('signatures/fee');
+    }
 }

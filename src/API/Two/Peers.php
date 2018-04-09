@@ -18,18 +18,21 @@ use Illuminate\Support\Collection;
 
 class Peers extends AbstractAPI
 {
-  /**
-   * @return \Illuminate\Support\Collection
-   */
-  public function all (): Collection {
-    return $this->get('peers');
-  }
+    /**
+     * @return \Illuminate\Support\Collection
+     */
+    public function all(): Collection
+    {
+        return $this->get('peers');
+    }
 
-  /**
-   * @param  string $ip
-   * @return \Illuminate\Support\Collection
-   */
-  public function get (string $ip): Collection {
-    return $this->get("peers/${ip}");
-  }
+    /**
+     * @param string $ip
+     *
+     * @return \Illuminate\Support\Collection
+     */
+    public function get(string $ip): Collection
+    {
+        return $this->get("peers/${ip}");
+    }
 }

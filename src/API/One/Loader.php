@@ -18,24 +18,27 @@ use Illuminate\Support\Collection;
 
 class Loader extends AbstractAPI
 {
-  /**
-   * @return \Illuminate\Support\Collection
-   */
-  public function status (): Collection {
-    return $this->get('loader/autoconfigure');
-  }
+    /**
+     * @return \Illuminate\Support\Collection
+     */
+    public function status(): Collection
+    {
+        return $this->get('loader/autoconfigure');
+    }
 
-  /**
-   * @return \Illuminate\Support\Collection
-   */
-  public function syncing (): Collection {
-    return $this->get('loader/status');
-  }
+    /**
+     * @return \Illuminate\Support\Collection
+     */
+    public function syncing(): Collection
+    {
+        return $this->get('loader/status');
+    }
 
-  /**
-   * @return \Illuminate\Support\Collection
-   */
-  public function configuration (): Collection {
-    return $this->get('loader/status/sync');
-  }
+    /**
+     * @return \Illuminate\Support\Collection
+     */
+    public function configuration(): Collection
+    {
+        return $this->get('loader/status/sync');
+    }
 }

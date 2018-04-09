@@ -38,7 +38,8 @@ class Client
     /**
      * @param int $version
      */
-    public function setClientVersion(int $version): self {
+    public function setClientVersion(int $version): self
+    {
         $this->version = $version;
 
         return $this;
@@ -52,9 +53,9 @@ class Client
     public function api(string $name): API\AbstractAPI
     {
         $client = Http::withBaseUri($this->config->host)->withHeaders([
-            'nethash' => $this->config->nethash,
-            'version' => $this->config->version,
-            'port'    => 1,
+            'nethash'     => $this->config->nethash,
+            'version'     => $this->config->version,
+            'port'        => 1,
             'API-Version' => $this->version,
         ]);
 
@@ -63,8 +64,9 @@ class Client
         return new $class($this, $client);
     }
 
-    private function buildClassName() {
-        $formatter = new NumberFormatter("en", NumberFormatter::SPELLOUT);
+    private function buildClassName()
+    {
+        $formatter = new NumberFormatter('en', NumberFormatter::SPELLOUT);
         $version = ucfirst($formatter->format($this->version));
 
         return "BrianFaust\\Ark\\API\\{$version}\\{$name}";

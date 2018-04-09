@@ -18,34 +18,41 @@ use Illuminate\Support\Collection;
 
 class Blocks extends AbstractAPI
 {
-  /**
-   * @return \Illuminate\Support\Collection
-   */
-  public function all (): Collection {
-    return $this->get('blocks');
-  }
+    /**
+     * @return \Illuminate\Support\Collection
+     */
+    public function all(): Collection
+    {
+        return $this->get('blocks');
+    }
 
-  /**
-   * @param  string $id
-   * @return \Illuminate\Support\Collection
-   */
-  public function get (string $id): Collection {
-    return $this->get("blocks/{$id}");
-  }
+    /**
+     * @param string $id
+     *
+     * @return \Illuminate\Support\Collection
+     */
+    public function get(string $id): Collection
+    {
+        return $this->get("blocks/{$id}");
+    }
 
-  /**
-   * @param  string $id
-   * @return \Illuminate\Support\Collection
-   */
-  public function transactions (string $id): Collection {
-    return $this->get("blocks/{$id}/transactions");
-  }
+    /**
+     * @param string $id
+     *
+     * @return \Illuminate\Support\Collection
+     */
+    public function transactions(string $id): Collection
+    {
+        return $this->get("blocks/{$id}/transactions");
+    }
 
-  /**
-   * @param  array  $payload
-   * @return \Illuminate\Support\Collection
-   */
-  public function search (array $payload): Collection {
-    return $this->post('blocks/search', $payload);
-  }
+    /**
+     * @param array $payload
+     *
+     * @return \Illuminate\Support\Collection
+     */
+    public function search(array $payload): Collection
+    {
+        return $this->post('blocks/search', $payload);
+    }
 }
