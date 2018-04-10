@@ -12,6 +12,12 @@
 [![Latest Version](https://img.shields.io/github/release/faustbrian/ARK-PHP.svg?style=flat-square)](https://github.com/faustbrian/ARK-PHP/releases)
 [![License](https://img.shields.io/packagist/l/faustbrian/ARK-PHP.svg?style=flat-square)](https://packagist.org/packages/faustbrian/ARK-PHP)
 
+# Introduction
+
+<p align="center">
+    <img src="https://arkcommunity.fund/media-kit/funded/banner.png" />
+</p>
+
 ## Installation
 
 Require this package, with [Composer](https://getcomposer.org/), in the root directory of your project.
