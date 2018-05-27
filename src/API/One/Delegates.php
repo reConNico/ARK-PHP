@@ -19,7 +19,8 @@ use Illuminate\Support\Collection;
 class Delegates extends AbstractAPI
 {
     /**
-     * @param  string $query
+     * @param string $query
+     *
      * @return \Illuminate\Support\Collection
      */
     public function all(array $query = []): Collection
@@ -28,7 +29,8 @@ class Delegates extends AbstractAPI
     }
 
     /**
-     * @param  string $id
+     * @param string $id
+     *
      * @return \Illuminate\Support\Collection
      */
     public function show(array $identifier): Collection
@@ -53,7 +55,8 @@ class Delegates extends AbstractAPI
     }
 
     /**
-     * @param  string $generatorPublicKey
+     * @param string $generatorPublicKey
+     *
      * @return \Illuminate\Support\Collection
      */
     public function forgedByAccount(string $generatorPublicKey): Collection
@@ -62,7 +65,8 @@ class Delegates extends AbstractAPI
     }
 
     /**
-     * @param  string $query
+     * @param string $query
+     *
      * @return \Illuminate\Support\Collection
      */
     public function search(string $query): Collection
@@ -71,7 +75,8 @@ class Delegates extends AbstractAPI
     }
 
     /**
-     * @param  string $publicKey
+     * @param string $publicKey
+     *
      * @return \Illuminate\Support\Collection
      */
     public function voters(string $publicKey): Collection
@@ -80,7 +85,8 @@ class Delegates extends AbstractAPI
     }
 
     /**
-     * @param  string $generatorPublicKey
+     * @param string $generatorPublicKey
+     *
      * @return \Illuminate\Support\Collection
      */
     public function nextForgers(): Collection
