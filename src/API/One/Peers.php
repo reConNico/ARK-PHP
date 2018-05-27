@@ -19,7 +19,8 @@ use Illuminate\Support\Collection;
 class Peers extends AbstractAPI
 {
     /**
-     * @param  string $query
+     * @param string $query
+     *
      * @return \Illuminate\Support\Collection
      */
     public function all(string $query): Collection
@@ -28,8 +29,9 @@ class Peers extends AbstractAPI
     }
 
     /**
-     * @param  string $ip
-     * @param  int    $port
+     * @param string $ip
+     * @param int    $port
+     *
      * @return \Illuminate\Support\Collection
      */
     public function get(string $ip, int $port): Collection
