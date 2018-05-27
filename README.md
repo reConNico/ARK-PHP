@@ -1,7 +1,7 @@
 # ARK PHP
 
 <p align="center">
-    <img src="https://github.com/faustbrian/ARK-PHP/blob/master/banner.png" />
+    <img src="https://github.com/faustbrian/ARK-PHP/blob/develop/banner.png" />
 </p>
 
 > An [ARK](https://github.com/ArkEcosystem/ark-node) bridge for PHP.
@@ -12,10 +12,6 @@
 [![Latest Version](https://img.shields.io/github/release/faustbrian/ARK-PHP.svg?style=flat-square)](https://github.com/faustbrian/ARK-PHP/releases)
 [![License](https://img.shields.io/packagist/l/faustbrian/ARK-PHP.svg?style=flat-square)](https://packagist.org/packages/faustbrian/ARK-PHP)
 
-<p align="center">
-    <a href="https://arkcommunity.fund/"><img src="https://arkcommunity.fund/media-kit/funded/banner.png" /></a>
-</p>
-
 ## Installation
 
 Require this package, with [Composer](https://getcomposer.org/), in the root directory of your project.
@@ -23,20 +19,6 @@ Require this package, with [Composer](https://getcomposer.org/), in the root dir
 ```bash
 $ composer require faustbrian/ark-php
 ```
-
-## Usage
-
-* [Initialization](docs/Initialization.md)
-* [Account](docs/Account.md)
-* [Block](docs/Block.md)
-* [Delegate](docs/Delegate.md)
-* [Loader](docs/Loader.md)
-* [MultiSignature](docs/MultiSignature.md)
-* [Peer](docs/Peer.md)
-* [Signature](docs/Signature.md)
-* [Transaction](docs/Transaction.md)
-* [Transport](docs/Transport.md)
-* [Calculator](docs/Calculator.md)
 
 ## Testing
 
@@ -47,7 +29,6 @@ $ phpunit
 ## Security
 
 If you discover a security vulnerability within this package, please send an e-mail to hello@brianfaust.me. All security vulnerabilities will be promptly addressed.
-
 ## Credits
 
 - [Brian Faust](https://github.com/faustbrian)
