@@ -23,9 +23,9 @@ class Transactions extends AbstractAPI
      *
      * @return \Illuminate\Support\Collection
      */
-    public function all(string $query): Collection
+    public function all(array $query = []): Collection
     {
-        return $this->get('transactions', $query);
+        return $this->get('api/transactions', $query);
     }
 
     /**
@@ -33,9 +33,9 @@ class Transactions extends AbstractAPI
      *
      * @return \Illuminate\Support\Collection
      */
-    public function get(string $id): Collection
+    public function show(string $id): Collection
     {
-        return $this->get('transactions/get', compact('id'));
+        return $this->get('api/transactions/get', compact('id'));
     }
 
     /**
@@ -43,9 +43,9 @@ class Transactions extends AbstractAPI
      *
      * @return \Illuminate\Support\Collection
      */
-    public function allUnconfirmed(string $query): Collection
+    public function allUnconfirmed(array $query = []): Collection
     {
-        return $this->get('transactions/unconfirmed', $query);
+        return $this->get('api/transactions/unconfirmed', $query);
     }
 
     /**
@@ -53,8 +53,8 @@ class Transactions extends AbstractAPI
      *
      * @return \Illuminate\Support\Collection
      */
-    public function getUnconfirmed(string $id): Collection
+    public function showUnconfirmed(string $id): Collection
     {
-        return $this->get('transactions/unconfirmed/get', compact('id'));
+        return $this->get('api/transactions/unconfirmed/get', compact('id'));
     }
 }

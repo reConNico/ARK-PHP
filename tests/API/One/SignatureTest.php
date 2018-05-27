@@ -24,7 +24,7 @@ class SignatureTest extends TestCase
     public function can_get_fee()
     {
         // Act...
-        $response = $this->getClient()->api('Signature')->fee();
+        $response = $this->getClient()->api('Signatures')->fee();
 
         // Assert...
         $this->assertInstanceOf('Illuminate\Support\Collection', $response);
@@ -41,7 +41,7 @@ class SignatureTest extends TestCase
         $secondSecret = env('ARK_TESTING_SECOND_SECRET');
 
         // Act...
-        $response = $this->getClient()->api('Signature')->create($secret, $secondSecret);
+        $response = $this->getClient()->api('Signatures')->create($secret, $secondSecret);
 
         // Assert...
         $this->assertInstanceOf('Illuminate\Support\Collection', $response);

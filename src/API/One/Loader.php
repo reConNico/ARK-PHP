@@ -23,22 +23,22 @@ class Loader extends AbstractAPI
      */
     public function status(): Collection
     {
-        return $this->get('loader/autoconfigure');
+        return $this->get('api/loader/autoconfigure');
     }
 
     /**
      * @return \Illuminate\Support\Collection
      */
-    public function syncing(): Collection
+    public function sync(): Collection
     {
-        return $this->get('loader/status');
+        return $this->get('api/loader/status');
     }
 
     /**
      * @return \Illuminate\Support\Collection
      */
-    public function configuration(): Collection
+    public function autoconfigure(): Collection
     {
-        return $this->get('loader/status/sync');
+        return $this->get('api/loader/status/sync');
     }
 }

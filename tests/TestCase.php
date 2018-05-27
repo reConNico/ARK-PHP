@@ -22,9 +22,7 @@ abstract class TestCase extends BaseTestCase
     protected function getClient(string $networkAddress = '1E')
     {
         $config = new Config(
-            'http',
-            '167.114.29.33',
-            4002,
+            'http://167.114.29.33:4002/',
             '578e820911f24e039733b45e4882b73e301f813a0d2c31330dafda84534ffa23',
             '1.1.1',
             $networkAddress

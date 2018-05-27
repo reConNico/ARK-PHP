@@ -24,17 +24,17 @@ class PeerTest extends TestCase
     public function can_get_peers()
     {
         // Act...
-        $response = $this->getClient()->api('Peer')->peers();
+        $response = $this->getClient()->api('Peers')->all();
 
         // Assert...
         $this->assertInstanceOf('Illuminate\Support\Collection', $response);
     }
 
     /** @test */
-    public function can_version()
+    public function can_get_version()
     {
         // Act...
-        $response = $this->getClient()->api('Peer')->version();
+        $response = $this->getClient()->api('Peers')->version();
 
         // Assert...
         $this->assertInstanceOf('Illuminate\Support\Collection', $response);
@@ -48,7 +48,7 @@ class PeerTest extends TestCase
         $port = 4001;
 
         // Act...
-        $response = $this->getClient()->api('Peer')->peer($ip, $port);
+        $response = $this->getClient()->api('Peers')->show($ip, $port);
 
         // Assert...
         $this->assertInstanceOf('Illuminate\Support\Collection', $response);

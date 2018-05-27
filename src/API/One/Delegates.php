@@ -19,23 +19,21 @@ use Illuminate\Support\Collection;
 class Delegates extends AbstractAPI
 {
     /**
-     * @param string $query
-     *
+     * @param  string $query
      * @return \Illuminate\Support\Collection
      */
-    public function all(string $query): Collection
+    public function all(array $query = []): Collection
     {
-        return $this->get('delegates', $query);
+        return $this->get('api/delegates', $query);
     }
 
     /**
-     * @param string $id
-     *
+     * @param  string $id
      * @return \Illuminate\Support\Collection
      */
-    public function get(string $id): Collection
+    public function show(array $identifier): Collection
     {
-        return $this->get('delegates/get', compact('id'));
+        return $this->get('api/delegates/get', $identifier);
     }
 
     /**
@@ -43,7 +41,7 @@ class Delegates extends AbstractAPI
      */
     public function count(): Collection
     {
-        return $this->get('delegates/count');
+        return $this->get('api/delegates/count');
     }
 
     /**
@@ -51,36 +49,42 @@ class Delegates extends AbstractAPI
      */
     public function fee(): Collection
     {
-        return $this->get('delegates/fee');
+        return $this->get('api/delegates/fee');
     }
 
     /**
-     * @param string $generatorPublicKey
-     *
+     * @param  string $generatorPublicKey
      * @return \Illuminate\Support\Collection
      */
-    public function forged(string $generatorPublicKey): Collection
+    public function forgedByAccount(string $generatorPublicKey): Collection
     {
-        return $this->get('delegates/forging/getForgedByAccount', compact('generatorPublicKey'));
+        return $this->get('api/delegates/forging/getForgedByAccount', compact('generatorPublicKey'));
     }
 
     /**
-     * @param string $query
-     *
+     * @param  string $query
      * @return \Illuminate\Support\Collection
      */
     public function search(string $query): Collection
     {
-        return $this->get('delegates/search', $query);
+        return $this->get('api/delegates/search', ['q' => $query]);
     }
 
     /**
-     * @param string $publicKey
-     *
+     * @param  string $publicKey
      * @return \Illuminate\Support\Collection
      */
     public function voters(string $publicKey): Collection
     {
-        return $this->get('delegates/voters', compact('publicKey'));
+        return $this->get('api/delegates/voters', compact('publicKey'));
+    }
+
+    /**
+     * @param  string $generatorPublicKey
+     * @return \Illuminate\Support\Collection
+     */
+    public function nextForgers(): Collection
+    {
+        return $this->get('api/delegates/getNextForgers');
     }
 }

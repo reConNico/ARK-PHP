@@ -27,7 +27,7 @@ class BlockTest extends TestCase
         $id = '2745982198389373800';
 
         // Act...
-        $response = $this->getClient()->api('Block')->block($id);
+        $response = $this->getClient()->api('Blocks')->show($id);
 
         // Assert...
         $this->assertInstanceOf('Illuminate\Support\Collection', $response);
@@ -37,7 +37,7 @@ class BlockTest extends TestCase
     public function can_get_blocks()
     {
         // Act...
-        $response = $this->getClient()->api('Block')->blocks();
+        $response = $this->getClient()->api('Blocks')->all();
 
         // Assert...
         $this->assertInstanceOf('Illuminate\Support\Collection', $response);
@@ -47,7 +47,7 @@ class BlockTest extends TestCase
     public function can_get_epoch()
     {
         // Act...
-        $response = $this->getClient()->api('Block')->epoch();
+        $response = $this->getClient()->api('Blocks')->epoch();
 
         // Assert...
         $this->assertInstanceOf('Illuminate\Support\Collection', $response);
@@ -57,7 +57,7 @@ class BlockTest extends TestCase
     public function can_get_height()
     {
         // Act...
-        $response = $this->getClient()->api('Block')->height();
+        $response = $this->getClient()->api('Blocks')->height();
 
         // Assert...
         $this->assertInstanceOf('Illuminate\Support\Collection', $response);
@@ -67,7 +67,7 @@ class BlockTest extends TestCase
     public function can_get_nethash()
     {
         // Act...
-        $response = $this->getClient()->api('Block')->nethash();
+        $response = $this->getClient()->api('Blocks')->nethash();
 
         // Assert...
         $this->assertInstanceOf('Illuminate\Support\Collection', $response);
@@ -77,7 +77,7 @@ class BlockTest extends TestCase
     public function can_get_fee()
     {
         // Act...
-        $response = $this->getClient()->api('Block')->fee();
+        $response = $this->getClient()->api('Blocks')->fee();
 
         // Assert...
         $this->assertInstanceOf('Illuminate\Support\Collection', $response);
@@ -87,7 +87,7 @@ class BlockTest extends TestCase
     public function can_get_fees()
     {
         // Act...
-        $response = $this->getClient()->api('Block')->fees();
+        $response = $this->getClient()->api('Blocks')->fees();
 
         // Assert...
         $this->assertInstanceOf('Illuminate\Support\Collection', $response);
@@ -97,7 +97,7 @@ class BlockTest extends TestCase
     public function can_get_milestone()
     {
         // Act...
-        $response = $this->getClient()->api('Block')->milestone();
+        $response = $this->getClient()->api('Blocks')->milestone();
 
         // Assert...
         $this->assertInstanceOf('Illuminate\Support\Collection', $response);
@@ -107,7 +107,7 @@ class BlockTest extends TestCase
     public function can_get_reward()
     {
         // Act...
-        $response = $this->getClient()->api('Block')->reward();
+        $response = $this->getClient()->api('Blocks')->reward();
 
         // Assert...
         $this->assertInstanceOf('Illuminate\Support\Collection', $response);
@@ -117,7 +117,7 @@ class BlockTest extends TestCase
     public function can_get_supply()
     {
         // Act...
-        $response = $this->getClient()->api('Block')->supply();
+        $response = $this->getClient()->api('Blocks')->supply();
 
         // Assert...
         $this->assertInstanceOf('Illuminate\Support\Collection', $response);
@@ -127,7 +127,7 @@ class BlockTest extends TestCase
     public function can_get_status()
     {
         // Act...
-        $response = $this->getClient()->api('Block')->status();
+        $response = $this->getClient()->api('Blocks')->status();
 
         // Assert...
         $this->assertInstanceOf('Illuminate\Support\Collection', $response);

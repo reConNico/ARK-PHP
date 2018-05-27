@@ -22,7 +22,7 @@ use BitWasp\Bitcoin\Network\NetworkFactory;
 use BitWasp\Bitcoin\Network\NetworkInterface;
 use BitWasp\Bitcoin\Signature\SignatureFactory;
 use BitWasp\Buffertools\Buffer;
-use BrianFaust\Ark\TransactionBuilder;
+use BrianFaust\Ark\Builder\TransactionBuilder;
 
 class Crypto
 {

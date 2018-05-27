@@ -13,6 +13,7 @@ declare(strict_types=1);
 
 namespace BrianFaust\Ark\API\One;
 
+use BrianFaust\Ark\API\AbstractAPI;
 use Illuminate\Support\Collection;
 
 class Transport extends AbstractAPI

@@ -27,7 +27,7 @@ class AccountTest extends TestCase
         $address = 'DARiJqhogp2Lu6bxufUFQQMuMyZbxjCydN';
 
         // Act...
-        $response = $this->getClient()->api('Account')->balance($address);
+        $response = $this->getClient()->api('Accounts')->balance($address);
 
         // Assert...
         $this->assertInstanceOf('Illuminate\Support\Collection', $response);
@@ -40,7 +40,7 @@ class AccountTest extends TestCase
         $address = 'DARiJqhogp2Lu6bxufUFQQMuMyZbxjCydN';
 
         // Act...
-        $response = $this->getClient()->api('Account')->publicKey($address);
+        $response = $this->getClient()->api('Accounts')->publicKey($address);
 
         // Assert...
         $this->assertInstanceOf('Illuminate\Support\Collection', $response);
@@ -53,7 +53,7 @@ class AccountTest extends TestCase
         $address = 'DARiJqhogp2Lu6bxufUFQQMuMyZbxjCydN';
 
         // Act...
-        $response = $this->getClient()->api('Account')->delegates($address);
+        $response = $this->getClient()->api('Accounts')->delegates($address);
 
         // Assert...
         $this->assertInstanceOf('Illuminate\Support\Collection', $response);
@@ -66,7 +66,7 @@ class AccountTest extends TestCase
         $address = 'DARiJqhogp2Lu6bxufUFQQMuMyZbxjCydN';
 
         // Act...
-        $response = $this->getClient()->api('Account')->delegatesFee($address);
+        $response = $this->getClient()->api('Accounts')->fee($address);
 
         // Assert...
         $this->assertInstanceOf('Illuminate\Support\Collection', $response);
@@ -84,7 +84,7 @@ class AccountTest extends TestCase
         $secondSecret = str_random(34);
 
         // Act...
-        $response = $this->getClient()->api('Account')->createDelegates($secret, $publicKey, $secondSecret);
+        $response = $this->getClient()->api('Accounts')->createDelegates($secret, $publicKey, $secondSecret);
 
         // Assert...
         $this->assertInstanceOf('Illuminate\Support\Collection', $response);
@@ -97,7 +97,7 @@ class AccountTest extends TestCase
         $address = 'DARiJqhogp2Lu6bxufUFQQMuMyZbxjCydN';
 
         // Act...
-        $response = $this->getClient()->api('Account')->account($address);
+        $response = $this->getClient()->api('Accounts')->show($address);
 
         // Assert...
         $this->assertInstanceOf('Illuminate\Support\Collection', $response);

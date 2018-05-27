@@ -24,18 +24,14 @@ class ConfigTest extends TestCase
     public function config_has_right_props()
     {
         $config = new Config(
-            'protocol',
-            'ip',
-            1234,
+            'http://167.114.29.33:4002/',
             'nethash',
             'version',
             '1E',
             'network'
         );
 
-        $this->assertSame('protocol', $config->protocol);
-        $this->assertSame('ip', $config->ip);
-        $this->assertSame(1234, $config->port);
+        $this->assertSame('http://167.114.29.33:4002/', $config->host);
         $this->assertSame('nethash', $config->nethash);
         $this->assertSame('version', $config->version);
         $this->assertSame('1E', $config->networkAddress);

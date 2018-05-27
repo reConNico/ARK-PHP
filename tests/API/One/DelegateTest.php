@@ -24,7 +24,7 @@ class DelegateTest extends TestCase
     public function can_count()
     {
         // Act...
-        $response = $this->getClient()->api('Delegate')->count();
+        $response = $this->getClient()->api('Delegates')->count();
 
         // Assert...
         $this->assertInstanceOf('Illuminate\Support\Collection', $response);
@@ -37,7 +37,7 @@ class DelegateTest extends TestCase
         $q = 'yin';
 
         // Act...
-        $response = $this->getClient()->api('Delegate')->search($q);
+        $response = $this->getClient()->api('Delegates')->search($q);
 
         // Assert...
         $this->assertInstanceOf('Illuminate\Support\Collection', $response);
@@ -50,7 +50,7 @@ class DelegateTest extends TestCase
         $publicKey = '022cca9529ec97a772156c152a00aad155ee6708243e65c9d211a589cb5d43234d';
 
         // Act...
-        $response = $this->getClient()->api('Delegate')->voters($publicKey);
+        $response = $this->getClient()->api('Delegates')->voters($publicKey);
 
         // Assert...
         $this->assertInstanceOf('Illuminate\Support\Collection', $response);
@@ -60,7 +60,7 @@ class DelegateTest extends TestCase
     public function can_get_delegate()
     {
         // Act...
-        $response = $this->getClient()->api('Delegate')->delegate([
+        $response = $this->getClient()->api('Delegates')->show([
             'publicKey' => '022cca9529ec97a772156c152a00aad155ee6708243e65c9d211a589cb5d43234d',
         ]);
 
@@ -72,7 +72,7 @@ class DelegateTest extends TestCase
     public function can_get_delegates()
     {
         // Act...
-        $response = $this->getClient()->api('Delegate')->delegates();
+        $response = $this->getClient()->api('Delegates')->all();
 
         // Assert...
         $this->assertInstanceOf('Illuminate\Support\Collection', $response);
@@ -82,7 +82,7 @@ class DelegateTest extends TestCase
     public function can_get_fee()
     {
         // Act...
-        $response = $this->getClient()->api('Delegate')->fee();
+        $response = $this->getClient()->api('Delegates')->fee();
 
         // Assert...
         $this->assertInstanceOf('Illuminate\Support\Collection', $response);
@@ -95,7 +95,7 @@ class DelegateTest extends TestCase
         $generatorPublicKey = '022cca9529ec97a772156c152a00aad155ee6708243e65c9d211a589cb5d43234d';
 
         // Act...
-        $response = $this->getClient()->api('Delegate')->forgedByAccount($generatorPublicKey);
+        $response = $this->getClient()->api('Delegates')->forgedByAccount($generatorPublicKey);
 
         // Assert...
         $this->assertInstanceOf('Illuminate\Support\Collection', $response);
@@ -113,7 +113,7 @@ class DelegateTest extends TestCase
         $secondSecret = env('ARK_TESTING_SECOND_SECRET');
 
         // Act...
-        $response = $this->getClient()->api('Delegate')->create($secret);
+        $response = $this->getClient()->api('Delegates')->create($secret);
 
         // Assert...
         $this->assertInstanceOf('Illuminate\Support\Collection', $response);
@@ -123,7 +123,7 @@ class DelegateTest extends TestCase
     public function can_get_next_forgers()
     {
         // Act...
-        $response = $this->getClient()->api('Delegate')->nextForgers();
+        $response = $this->getClient()->api('Delegates')->nextForgers();
 
         // Assert...
         $this->assertInstanceOf('Illuminate\Support\Collection', $response);
@@ -140,7 +140,7 @@ class DelegateTest extends TestCase
         $secondSecret = env('ARK_TESTING_SECOND_SECRET');
 
         // Act...
-        $response = $this->getClient()->builder('Delegate')->create($secret, $username, $secondSecret);
+        $response = $this->getClient()->builder('Delegates')->create($secret, $username, $secondSecret);
 
         // Assert...
         $this->assertInstanceOf('stdClass', $response);

@@ -19,24 +19,22 @@ use Illuminate\Support\Collection;
 class Peers extends AbstractAPI
 {
     /**
-     * @param string $query
-     *
+     * @param  string $query
      * @return \Illuminate\Support\Collection
      */
-    public function all(string $query): Collection
+    public function all(array $query = []): Collection
     {
-        return $this->get('peers', $query);
+        return $this->get('api/peers', $query);
     }
 
     /**
-     * @param string $ip
-     * @param int    $port
-     *
+     * @param  string $ip
+     * @param  int    $port
      * @return \Illuminate\Support\Collection
      */
-    public function get(string $ip, int $port): Collection
+    public function show(string $ip, int $port): Collection
     {
-        return $this->get('peers/get', compact('ip', 'port'));
+        return $this->get('api/peers/get', compact('ip', 'port'));
     }
 
     /**
@@ -44,6 +42,6 @@ class Peers extends AbstractAPI
      */
     public function version(): Collection
     {
-        return $this->get('peers/version');
+        return $this->get('api/peers/version');
     }
 }
