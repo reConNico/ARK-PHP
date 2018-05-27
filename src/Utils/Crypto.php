@@ -104,9 +104,9 @@ class Crypto
         return (new PayToPubKeyHashAddress($digest))->getAddress($network);
     }
 
-    public function signMessage (string $message, string $passphrase): array
+    public function signMessage(string $message, string $passphrase): array
     {
-        $keys = Crypto::getKeys($passphrase);
+        $keys = self::getKeys($passphrase);
 
         return [
             'publicKey' => $keys->getPublicKey()->getHex(),
@@ -114,14 +114,14 @@ class Crypto
         ] + compact('message');
     }
 
-    public function verifyMessage (string $message, string $publicKey, string $signature): bool
+    public function verifyMessage(string $message, string $publicKey, string $signature): bool
     {
         return PublicKeyFactory::fromHex($publicKey)->verify(
             new Buffer(hash('sha256', $message, true)),
             SignatureFactory::fromHex($signature)
         );
     }
-    
+
     public static function verify(object $transaction)
     {
         $publicKey = PublicKeyFactory::fromHex($transaction->senderPublicKey);
