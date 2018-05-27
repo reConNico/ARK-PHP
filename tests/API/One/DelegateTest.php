@@ -11,7 +11,7 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace BrianFaust\Tests\Ark\API;
+namespace BrianFaust\Tests\Ark\API\One;
 
 use BrianFaust\Tests\Ark\TestCase;
 

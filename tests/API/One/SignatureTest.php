@@ -11,46 +11,37 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace BrianFaust\Tests\Ark\API;
+namespace BrianFaust\Tests\Ark\API\One;
 
 use BrianFaust\Tests\Ark\TestCase;
 
 /**
  * @coversNothing
  */
-class VoteTest extends TestCase
+class SignatureTest extends TestCase
 {
     /** @test */
-    public function can_vote()
+    public function can_get_fee()
     {
-        // Skip...
-        $this->markTestSkipped('This requires secrets and will only be tested on local machines.');
-
-        // Arrange...
-        $secret = env('ARK_TESTING_SECRET');
-        $delegate = '022cca9529ec97a772156c152a00aad155ee6708243e65c9d211a589cb5d43234d';
-        $secondSecret = env('ARK_TESTING_SECOND_SECRET');
-
         // Act...
-        $response = $this->getClient()->api('Vote')->vote($secret, $delegate, $secondSecret);
+        $response = $this->getClient()->api('Signature')->fee();
 
         // Assert...
         $this->assertInstanceOf('Illuminate\Support\Collection', $response);
     }
 
     /** @test */
-    public function can_unvote()
+    public function can_add_signature()
     {
         // Skip...
         $this->markTestSkipped('This requires secrets and will only be tested on local machines.');
 
         // Arrange...
         $secret = env('ARK_TESTING_SECRET');
-        $delegate = '022cca9529ec97a772156c152a00aad155ee6708243e65c9d211a589cb5d43234d';
         $secondSecret = env('ARK_TESTING_SECOND_SECRET');
 
         // Act...
-        $response = $this->getClient()->api('Vote')->unvote($secret, $delegate, $secondSecret);
+        $response = $this->getClient()->api('Signature')->create($secret, $secondSecret);
 
         // Assert...
         $this->assertInstanceOf('Illuminate\Support\Collection', $response);

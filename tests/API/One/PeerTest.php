@@ -11,36 +11,44 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace BrianFaust\Tests\Ark\API;
+namespace BrianFaust\Tests\Ark\API\One;
 
 use BrianFaust\Tests\Ark\TestCase;
 
 /**
  * @coversNothing
  */
-class TransportTest extends TestCase
+class PeerTest extends TestCase
 {
     /** @test */
-    public function can_get_blocks_common()
+    public function can_get_peers()
     {
-        // Arrange...
-        $ids = ['2745982198389373800'];
-
         // Act...
-        $response = $this->getClient()->api('Transport')->blocksCommon($ids);
+        $response = $this->getClient()->api('Peer')->peers();
 
         // Assert...
         $this->assertInstanceOf('Illuminate\Support\Collection', $response);
     }
 
     /** @test */
-    public function can_add_transactions()
+    public function can_version()
+    {
+        // Act...
+        $response = $this->getClient()->api('Peer')->version();
+
+        // Assert...
+        $this->assertInstanceOf('Illuminate\Support\Collection', $response);
+    }
+
+    /** @test */
+    public function can_get_peer()
     {
         // Arrange...
-        $transactions = [];
+        $ip = '167.114.29.33';
+        $port = 4001;
 
         // Act...
-        $response = $this->getClient()->api('Transport')->createTransactions($transactions);
+        $response = $this->getClient()->api('Peer')->peer($ip, $port);
 
         // Assert...
         $this->assertInstanceOf('Illuminate\Support\Collection', $response);

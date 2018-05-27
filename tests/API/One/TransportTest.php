@@ -11,37 +11,36 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace BrianFaust\Tests\Ark\API;
+namespace BrianFaust\Tests\Ark\API\One;
 
 use BrianFaust\Tests\Ark\TestCase;
 
 /**
  * @coversNothing
  */
-class SignatureTest extends TestCase
+class TransportTest extends TestCase
 {
     /** @test */
-    public function can_get_fee()
+    public function can_get_blocks_common()
     {
+        // Arrange...
+        $ids = ['2745982198389373800'];
+
         // Act...
-        $response = $this->getClient()->api('Signature')->fee();
+        $response = $this->getClient()->api('Transport')->blocksCommon($ids);
 
         // Assert...
         $this->assertInstanceOf('Illuminate\Support\Collection', $response);
     }
 
     /** @test */
-    public function can_add_signature()
+    public function can_add_transactions()
     {
-        // Skip...
-        $this->markTestSkipped('This requires secrets and will only be tested on local machines.');
-
         // Arrange...
-        $secret = env('ARK_TESTING_SECRET');
-        $secondSecret = env('ARK_TESTING_SECOND_SECRET');
+        $transactions = [];
 
         // Act...
-        $response = $this->getClient()->api('Signature')->create($secret, $secondSecret);
+        $response = $this->getClient()->api('Transport')->createTransactions($transactions);
 
         // Assert...
         $this->assertInstanceOf('Illuminate\Support\Collection', $response);

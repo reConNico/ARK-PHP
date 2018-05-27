@@ -11,44 +11,40 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace BrianFaust\Tests\Ark\API;
+namespace BrianFaust\Tests\Ark\API\One;
 
 use BrianFaust\Tests\Ark\TestCase;
 
 /**
  * @coversNothing
  */
-class PeerTest extends TestCase
+class LoaderTest extends TestCase
 {
     /** @test */
-    public function can_get_peers()
+    public function can_status()
     {
         // Act...
-        $response = $this->getClient()->api('Peer')->peers();
+        $response = $this->getClient()->api('Loader')->status();
 
         // Assert...
         $this->assertInstanceOf('Illuminate\Support\Collection', $response);
     }
 
     /** @test */
-    public function can_version()
+    public function can_sync()
     {
         // Act...
-        $response = $this->getClient()->api('Peer')->version();
+        $response = $this->getClient()->api('Loader')->sync();
 
         // Assert...
         $this->assertInstanceOf('Illuminate\Support\Collection', $response);
     }
 
     /** @test */
-    public function can_get_peer()
+    public function can_autoconfigure()
     {
-        // Arrange...
-        $ip = '167.114.29.33';
-        $port = 4001;
-
         // Act...
-        $response = $this->getClient()->api('Peer')->peer($ip, $port);
+        $response = $this->getClient()->api('Loader')->autoconfigure();
 
         // Assert...
         $this->assertInstanceOf('Illuminate\Support\Collection', $response);
