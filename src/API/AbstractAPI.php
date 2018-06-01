@@ -15,8 +15,8 @@ namespace ArkEcosystem\Ark\API;
 
 use ArkEcosystem\Ark\Client;
 use ArkEcosystem\Ark\Exceptions\InvalidResponseException;
-use ArkEcosystem\Http\HttpResponse;
-use ArkEcosystem\Http\PendingHttpRequest;
+use BrianFaust\Http\HttpResponse;
+use BrianFaust\Http\PendingHttpRequest;
 use Illuminate\Support\Collection;
 
 abstract class AbstractAPI
@@ -27,7 +27,7 @@ abstract class AbstractAPI
     protected $client;
 
     /**
-     * @var \ArkEcosystem\Http\PendingHttpRequest
+     * @var \BrianFaust\Http\PendingHttpRequest
      */
     protected $http;
 
@@ -35,7 +35,7 @@ abstract class AbstractAPI
      * Create a new API class instance.
      *
      * @param \ArkEcosystem\Ark\Client              $client
-     * @param \ArkEcosystem\Http\PendingHttpRequest $http
+     * @param \BrianFaust\Http\PendingHttpRequest $http
      */
     public function __construct(Client $client, PendingHttpRequest $http)
     {

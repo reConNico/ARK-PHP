@@ -14,7 +14,7 @@ declare(strict_types=1);
 namespace ArkEcosystem\Ark;
 
 use ArkEcosystem\Ark\Builder\TransactionBuilder;
-use ArkEcosystem\Http\Http;
+use BrianFaust\Http\Http;
 use NumberFormatter;
 
 class Client
