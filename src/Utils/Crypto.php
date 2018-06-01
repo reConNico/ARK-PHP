@@ -29,10 +29,10 @@ class Crypto
     /**
      * Compute an ARK Address from the given public key.
      *
-     * @param string $secret
-     * @param int    $version
-     *
+     * @param string $publicKey
+     * @param int $version
      * @return string
+     * @internal param string $secret
      */
     public static function address(string $publicKey, int $version = 0x17): string
     {
@@ -53,8 +53,9 @@ class Crypto
      * @param string $networkVersion
      *
      * @return bool
+     * @throws \Exception
      */
-    public static function validateAddress(string $address, string $networkVersion = '17')
+    public static function validateAddress(string $address, string $networkVersion = '17'): bool
     {
         // Base58 decode the address
         $address = new Buffer(Base58::decode($address));
@@ -86,13 +87,24 @@ class Crypto
         return Base58::encodeCheck($seed);
     }
 
-    public static function getKeys(string $secret)
+    /**
+     * @param string $secret
+     *
+     * @return \BitWasp\Bitcoin\Crypto\EcAdapter\Key\PrivateKeyInterface
+     */
+    public static function getKeys(string $secret): \BitWasp\Bitcoin\Crypto\EcAdapter\Key\PrivateKeyInterface
     {
-        $seed = self::bchexdec((hash('sha256', $secret)));
+        $seed = self::bchexdec(hash('sha256', $secret));
 
         return PrivateKeyFactory::fromInt($seed, true);
     }
 
+    /**
+     * @param PrivateKey $privateKey
+     * @param NetworkInterface|null $network
+     *
+     * @return string
+     */
     public static function getAddress(PrivateKey $privateKey, NetworkInterface $network = null)
     {
         $publicKey = $privateKey->getPublicKey();
@@ -104,6 +116,13 @@ class Crypto
         return (new PayToPubKeyHashAddress($digest))->getAddress($network);
     }
 
+    /**
+     * @param string $message
+     * @param string $passphrase
+     *
+     * @return array
+     * @throws \Exception
+     */
     public static function signMessage(string $message, string $passphrase): array
     {
         $keys = self::getKeys($passphrase);
@@ -114,6 +133,14 @@ class Crypto
         ] + compact('message');
     }
 
+    /**
+     * @param string $message
+     * @param string $publicKey
+     * @param string $signature
+     *
+     * @return bool
+     * @throws \Exception
+     */
     public static function verifyMessage(string $message, string $publicKey, string $signature): bool
     {
         return PublicKeyFactory::fromHex($publicKey)->verify(
@@ -122,7 +149,13 @@ class Crypto
         );
     }
 
-    public static function verify(object $transaction)
+    /**
+     * @param object $transaction
+     *
+     * @return bool
+     * @throws \Exception
+     */
+    public static function verify(object $transaction): bool
     {
         $publicKey = PublicKeyFactory::fromHex($transaction->senderPublicKey);
         $bytes = TransactionBuilder::getBytes($transaction);
@@ -133,7 +166,14 @@ class Crypto
         );
     }
 
-    public static function secondVerify(object $transaction, string $secondPublicKeyHex)
+    /**
+     * @param object $transaction
+     * @param string $secondPublicKeyHex
+     *
+     * @return bool
+     * @throws \Exception
+     */
+    public static function secondVerify(object $transaction, string $secondPublicKeyHex): bool
     {
         $secondPublicKeys = PublicKeyFactory::fromHex($secondPublicKeyHex);
         $bytes = TransactionBuilder::getBytes($transaction, false);
@@ -157,7 +197,7 @@ class Crypto
         $dec = '0';
         $len = strlen($hex);
         for ($i = 1; $i <= $len; $i++) {
-            $dec = bcadd($dec, bcmul(strval(hexdec($hex[$i - 1])), bcpow('16', strval($len - $i))));
+            $dec = bcadd($dec, bcmul((string)hexdec($hex[$i - 1]), bcpow('16', (string)($len - $i))));
         }
 
         return $dec;

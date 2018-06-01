@@ -58,8 +58,8 @@ class Base58
      * Decode and verify the checksum of a Base58 encoded string.
      *
      * @param string $value
-     *
      * @return string
+     * @throws Exception
      */
     public static function decodeCheck(string $value): string
     {
@@ -69,7 +69,7 @@ class Base58
         $result = substr($result, 0, -4);
 
         if (static::digest($result) !== $check) {
-            throw new Exception('Invalid checksum');
+            throw new \RuntimeException('Invalid checksum');
         }
 
         return $result;
