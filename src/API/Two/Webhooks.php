@@ -47,13 +47,14 @@ class Webhooks extends AbstractAPI
     }
 
     /**
-     * @param int $id
+     * @param int   $id
+     * @param array $payload
      *
      * @return \Illuminate\Support\Collection
      */
-    public function update(int $id): Collection
+    public function update(int $id, array $payload): Collection
     {
-        return $this->put("webhooks/{$id}");
+        return $this->put("webhooks/{$id}", $payload);
     }
 
     /**
