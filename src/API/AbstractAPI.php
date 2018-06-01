@@ -34,7 +34,7 @@ abstract class AbstractAPI
     /**
      * Create a new API class instance.
      *
-     * @param \ArkEcosystem\Ark\Client              $client
+     * @param \ArkEcosystem\Ark\Client            $client
      * @param \BrianFaust\Http\PendingHttpRequest $http
      */
     public function __construct(Client $client, PendingHttpRequest $http)
