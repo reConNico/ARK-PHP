@@ -1,5 +1,5 @@
 {
-    "name": "faustbrian/ark-php",
+    "name": "arkecosystem/ark-php",
     "description": "An ARK bridge for PHP.",
     "keywords": ["api", "ark", "crypto", "currency"],
     "license": "MIT",
@@ -20,12 +20,12 @@
     },
     "autoload": {
         "psr-4": {
-            "BrianFaust\\Ark\\": "src"
+            "ArkEcosystem\\Ark\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "BrianFaust\\Tests\\Ark\\": "tests"
+            "ArkEcosystem\\Tests\\Ark\\": "tests"
         }
     },
     "config": {

@@ -5,37 +5,37 @@ declare(strict_types=1);
 /*
  * This file is part of ARK PHP.
  *
- * (c) Brian Faust <hello@brianfaust.me>
+ * (c) Ark Ecosystem <info@ark.io>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace BrianFaust\Ark\API;
+namespace ArkEcosystem\Ark\API;
 
-use BrianFaust\Ark\Client;
-use BrianFaust\Ark\Exceptions\InvalidResponseException;
-use BrianFaust\Http\HttpResponse;
-use BrianFaust\Http\PendingHttpRequest;
+use ArkEcosystem\Ark\Client;
+use ArkEcosystem\Ark\Exceptions\InvalidResponseException;
+use ArkEcosystem\Http\HttpResponse;
+use ArkEcosystem\Http\PendingHttpRequest;
 use Illuminate\Support\Collection;
 
 abstract class AbstractAPI
 {
     /**
-     * @var \BrianFaust\Ark\Client
+     * @var \ArkEcosystem\Ark\Client
      */
     protected $client;
 
     /**
-     * @var \BrianFaust\Http\PendingHttpRequest
+     * @var \ArkEcosystem\Http\PendingHttpRequest
      */
     protected $http;
 
     /**
      * Create a new API class instance.
      *
-     * @param \BrianFaust\Ark\Client              $client
-     * @param \BrianFaust\Http\PendingHttpRequest $http
+     * @param \ArkEcosystem\Ark\Client              $client
+     * @param \ArkEcosystem\Http\PendingHttpRequest $http
      */
     public function __construct(Client $client, PendingHttpRequest $http)
     {

@@ -5,16 +5,16 @@ declare(strict_types=1);
 /*
  * This file is part of ARK PHP.
  *
- * (c) Brian Faust <hello@brianfaust.me>
+ * (c) Ark Ecosystem <info@ark.io>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace BrianFaust\Tests\Ark;
+namespace ArkEcosystem\Tests\Ark;
 
-use BrianFaust\Ark\Client;
-use BrianFaust\Ark\Config;
+use ArkEcosystem\Ark\Client;
+use ArkEcosystem\Ark\Config;
 use PHPUnit\Framework\TestCase as BaseTestCase;
 
 abstract class TestCase extends BaseTestCase

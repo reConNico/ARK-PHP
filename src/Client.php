@@ -5,21 +5,21 @@ declare(strict_types=1);
 /*
  * This file is part of ARK PHP.
  *
- * (c) Brian Faust <hello@brianfaust.me>
+ * (c) Ark Ecosystem <info@ark.io>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace BrianFaust\Ark;
+namespace ArkEcosystem\Ark;
 
-use BrianFaust\Ark\Builder\TransactionBuilder;
-use BrianFaust\Http\Http;
+use ArkEcosystem\Ark\Builder\TransactionBuilder;
+use ArkEcosystem\Http\Http;
 use NumberFormatter;
 
 class Client
 {
-    /** @var \BrianFaust\Ark\Config */
+    /** @var \ArkEcosystem\Ark\Config */
     public $config;
 
     /** @var int */
@@ -28,7 +28,7 @@ class Client
     /**
      * Create a new Ark client instance.
      *
-     * @param \BrianFaust\Ark\Config $config
+     * @param \ArkEcosystem\Ark\Config $config
      */
     public function __construct(Config $config)
     {
@@ -49,7 +49,7 @@ class Client
     /**
      * @param string $name
      *
-     * @return \BrianFaust\Ark\API\AbstractAPI
+     * @return \ArkEcosystem\Ark\API\AbstractAPI
      */
     public function api(string $name): API\AbstractAPI
     {
@@ -70,6 +70,6 @@ class Client
         $formatter = new NumberFormatter('en', NumberFormatter::SPELLOUT);
         $version = ucfirst($formatter->format($this->version));
 
-        return "BrianFaust\\Ark\\API\\{$version}\\{$name}";
+        return "ArkEcosystem\\Ark\\API\\{$version}\\{$name}";
     }
 }
