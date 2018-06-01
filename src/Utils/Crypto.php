@@ -13,6 +13,7 @@ declare(strict_types=1);
 
 namespace ArkEcosystem\Ark\Utils;
 
+use ArkEcosystem\Ark\Builder\TransactionBuilder;
 use BitWasp\Bitcoin\Address\PayToPubKeyHashAddress;
 use BitWasp\Bitcoin\Crypto\EcAdapter\Impl\PhpEcc\Key\PrivateKey;
 use BitWasp\Bitcoin\Crypto\Hash;
@@ -22,7 +23,6 @@ use BitWasp\Bitcoin\Network\NetworkFactory;
 use BitWasp\Bitcoin\Network\NetworkInterface;
 use BitWasp\Bitcoin\Signature\SignatureFactory;
 use BitWasp\Buffertools\Buffer;
-use ArkEcosystem\Ark\Builder\TransactionBuilder;
 
 class Crypto
 {

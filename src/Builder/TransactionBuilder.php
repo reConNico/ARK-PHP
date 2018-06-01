@@ -13,9 +13,9 @@ declare(strict_types=1);
 
 namespace ArkEcosystem\Ark\Builder;
 
+use ArkEcosystem\Ark\Utils\Crypto;
 use BitWasp\Bitcoin\Crypto\Hash;
 use BitWasp\Buffertools\Buffer;
-use ArkEcosystem\Ark\Utils\Crypto;
 
 class TransactionBuilder
 {
